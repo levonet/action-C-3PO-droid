@@ -11,7 +11,7 @@ inputs:
       with the local git config, which enables your scripts to run authenticated git
       commands. The post-job step removes the PAT.
     default: ${{ github.token }}
-outputs:
+outputs: {}
 runs:
   using: node12
   main: dist/index.js
