@@ -6,6 +6,9 @@ on:
     branches:
     - master
   pull_request:
+  issue_comment:
+    types:
+    - created
 
 jobs:
   unit:
@@ -21,3 +24,29 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./
+      id: c-3po
+      with:
+        expect: |
+          - command: help
+          - pattern: ^/set (?<output>[^=]+)=(?<value>.*)$
+          - pattern: ^/unset (?<output>.+)$
+            value: "1"
+          - command: chances
+            pattern: (?<value>\d+)
+          - command: restart
+            output: run-deploy
+
+    - if: ${{ steps.c-3po.outputs.help }}
+      run: echo "You know better than to trust a strange computer!"
+
+    - if: ${{ steps.c-3po.outputs.set && steps.c-3po.outputs.name }}
+      run: echo "${{ steps.c-3po.outputs.name }}, it is you, it Is You!"
+
+    - if: ${{ steps.c-3po.outputs.chances }}
+      run: echo "R2 says the chances of survival are ${{ steps.c-3po.outputs.chances }}... to one"
+
+    - if: ${{ steps.c-3po.outputs.unset && steps.c-3po.outputs.R2-D2 == "1" }}
+      run: echo "R2-D2, where are you?"
+
+    - if: ${{ steps.c-3po.outputs.run-deploy == "true" }}
+      run: echo "We're doomed"
