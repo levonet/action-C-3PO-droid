@@ -45,8 +45,8 @@ jobs:
     - if: ${{ steps.c-3po.outputs.chances }}
       run: echo "R2 says the chances of survival are ${{ steps.c-3po.outputs.chances }}... to one"
 
-    - if: ${{ steps.c-3po.outputs.unset && steps.c-3po.outputs.R2-D2 == "1" }}
+    - if: ${{ steps.c-3po.outputs.unset && steps.c-3po.outputs.R2-D2 == '1' }}
       run: echo "R2-D2, where are you?"
 
-    - if: ${{ steps.c-3po.outputs.run-deploy == "true" }}
+    - if: ${{ steps.c-3po.outputs.run-deploy == 'true' }}
       run: echo "We're doomed"
