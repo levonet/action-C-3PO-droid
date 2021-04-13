@@ -4,13 +4,7 @@ description: Comment Parser GitHub Action
 inputs:
   expect:
     description: List of objects with command patterns, see docs for details
-    default: "[]"
-  token:
-    description: >
-      Personal access token (PAT) used to fetch the repository. The PAT is configured
-      with the local git config, which enables your scripts to run authenticated git
-      commands. The post-job step removes the PAT.
-    default: ${{ github.token }}
+    default: '[]'
 outputs: {}
 runs:
   using: node12
