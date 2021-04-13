@@ -5,7 +5,8 @@ async function run() {
     try {
         core.info(`eventName: ${context.eventName}`)
         core.info(JSON.stringify(context.payload))
-        if (context.eventName === 'issue_comment' && !context.payload.issue.pull_request) {
+        if (context.eventName !== 'issue_comment'
+            || (context.eventName === 'issue_comment' && !context.payload.issue.pull_request)) {
             core.info('There is no comment action.')
             return
         }
