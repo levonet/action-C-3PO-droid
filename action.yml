@@ -1,6 +1,11 @@
 ---
-name: action-TBD
-description: TBD
+name: action-C-3PO-droid
+description: Comment Parser GitHub Action
+inputs:
+  expect:
+    description: List of objects with command patterns, see docs for details
+    default: '[]'
+outputs: {}
 runs:
   using: node12
   main: dist/index.js
