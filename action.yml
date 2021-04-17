@@ -3,8 +3,18 @@ name: action-C-3PO-droid
 description: Comment Parser GitHub Action
 inputs:
   expect:
-    description: List of objects with command patterns, see docs for details
+    description: List of objects with command patterns, see docs for details.
     default: '[]'
+  in:
+    description: |
+      Sets the type of comments where to search for commands.
+      Possible values are `issue`, `pull_request` or `any`.
+    default: any
+  description:
+    description: |
+      Determines whether to parse a description of an Issue or a Pull Request.
+      Can be `true` or `false`.
+    default: 'false'
 outputs: {}
 runs:
   using: node12
