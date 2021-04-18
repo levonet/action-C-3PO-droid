@@ -223,6 +223,11 @@ describe('test parseRow()', () => {
             pattern: /.*987.*/u,
             defaultOutput: 'test-13',
             defaultValue: '468'
+        },
+        {
+            command: 'test-14',
+            pattern: /^\/test-14\b(\s+(?<output>.+))?$/u,
+            defaultValue: '468'
         }
     ]
 
@@ -295,6 +300,15 @@ describe('test parseRow()', () => {
         })
     })
 
+    test('expect output key `has-<command>` with value if do not pass output key', () => {
+        parser.parseRow(this.result, expectRules, '/test3 =123')
+        expect(this.result).toStrictEqual({
+            old: '1',
+            'is-test3': '/test3 =123',
+            'has-test3': '123'
+        })
+    })
+
     test('expect output key `has-<command>-<output>` with default value if have coincidence by simple pattern and preset output', () => {
         parser.parseRow(this.result, expectRules, '/test4 123')
         expect(this.result).toStrictEqual({
@@ -310,6 +324,15 @@ describe('test parseRow()', () => {
             old: '1',
             'is-test5': '/test5  123 ',
             'has-test5-t5': '123'
+        })
+    })
+
+    test('expect output key `has-<command>-<output>` with value if have coincidence by command without value', () => {
+        parser.parseRow(this.result, expectRules, '/test5')
+        expect(this.result).toStrictEqual({
+            old: '1',
+            'is-test5': '/test5',
+            'has-test5-t5': ''
         })
     })
 
@@ -379,6 +402,15 @@ describe('test parseRow()', () => {
         expect(this.result).toStrictEqual({
             old: '1',
             'has-test-13': '468'
+        })
+    })
+
+    test('expect output key `has-<command>` with value if output not defined', () => {
+        parser.parseRow(this.result, expectRules, '/test-14')
+        expect(this.result).toStrictEqual({
+            old: '1',
+            'is-test-14': '/test-14',
+            'has-test-14': '468'
         })
     })
 })
