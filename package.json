@@ -1,5 +1,5 @@
 {
-  "name": "action-C-3PO-droid",
+  "name": "action-c-3po-droid",
   "version": "0.0.0",
   "description": "Comment Parser GitHub Action",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/levonet/action-C-3PO-droid.git"
+    "url": "git+https://github.com/blablacar/action-c-3po-droid.git"
   },
   "keywords": [
     "GitHub",
@@ -19,9 +19,9 @@
   "author": "Pavlo Bashynskyi (levonet)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/levonet/action-C-3PO-droid/issues"
+    "url": "https://github.com/blablacar/action-c-3po-droid/issues"
   },
-  "homepage": "https://github.com/levonet/action-C-3PO-droid#readme",
+  "homepage": "https://github.com/blablacar/action-c-3po-droid#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",

@@ -21,7 +21,7 @@ jobs:
   uses:
     runs-on: ubuntu-latest
     steps:
-    - uses: levonet/action-C-3PO-droid@master
+    - uses: blablacar/action-c-3po-droid@master
       id: c-3po
       with:
         expect: |
