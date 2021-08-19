@@ -1,5 +1,23 @@
 const droid = require('../lib/droid')
 
+describe('test splitBody()', () => {
+    test('empty text', () => {
+        expect(droid.splitBody('')).toStrictEqual([])
+    })
+
+    test('null text', () => {
+        expect(droid.splitBody(null)).toStrictEqual([])
+    })
+
+    test('one line text', () => {
+        expect(droid.splitBody('test')).toStrictEqual(['test'])
+    })
+
+    test('multi-row text', () => {
+        expect(droid.splitBody('t1\nt 2\r\n\r\n')).toStrictEqual(['t1', 't 2', '', ''])
+    })
+})
+
 describe('test getBody()', () => {
     const successResult = ['/help', 'me', 'please']
     const issueCommentPayload = {
