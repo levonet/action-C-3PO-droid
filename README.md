@@ -154,6 +154,12 @@ The default is `false`.
 
 ## Outputs
 
+### `commands`
+
+Return a list of parsed commands.
+In JSON format.
+List items have the optional attributes `command`, `output` and `value`.
+
 ### `is-<command>`
 
 Returns the contents of a row if a pattern or command is matched.

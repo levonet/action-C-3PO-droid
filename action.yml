@@ -15,7 +15,9 @@ inputs:
       Determines whether to parse a description of an Issue or a Pull Request.
       Can be `true` or `false`.
     default: 'false'
-outputs: {}
+outputs:
+  commands:
+    description: List of parsed commands. In JSON format.
 runs:
   using: node12
   main: dist/index.js
