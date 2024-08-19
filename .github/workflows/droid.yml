@@ -29,17 +29,23 @@ jobs:
         description: 'true'
 
     - if: ${{ steps.c-3po.outputs.is-hello }}
-      run: node ./test/assets/echo.js
       env:
         INPUTS_ARG1: "${{ steps.c-3po.outputs.has-hello }}"
         INPUTS_ARG2: ", it is you, it Is You!"
+      with:
+        script: |
+          const args = [process.env.INPUTS_ARG1, process.env.INPUTS_ARG2]
+          core.info(args.join(''))
 
     - if: ${{ steps.c-3po.outputs.is-chances && steps.c-3po.outputs.has-chances-survival }}
-      run: node ./test/assets/echo.js"
       env:
-        INPUTS_ARG1: "R2 says the chances of survival are"
+        INPUTS_ARG1: "R2 says the chances of survival are "
         INPUTS_ARG2: "${{ steps.c-3po.outputs.has-chances-survival }}"
         INPUTS_ARG3: "... to one"
+      with:
+        script: |
+          const args = [process.env.INPUTS_ARG1, process.env.INPUTS_ARG2, process.env.INPUTS_ARG3]
+          core.info(args.join(''))
 
     - if: ${{ steps.c-3po.outputs.is-chances && steps.c-3po.outputs.has-chances-win > 0 }}
       run: echo "We'll take the next chance, and the next."
