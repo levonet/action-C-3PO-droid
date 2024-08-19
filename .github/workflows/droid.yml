@@ -32,6 +32,7 @@ jobs:
       env:
         INPUTS_ARG1: "${{ steps.c-3po.outputs.has-hello }}"
         INPUTS_ARG2: ", it is you, it Is You!"
+      uses: actions/github-script@v7
       with:
         script: |
           const args = [process.env.INPUTS_ARG1, process.env.INPUTS_ARG2]
@@ -42,6 +43,7 @@ jobs:
         INPUTS_ARG1: "R2 says the chances of survival are "
         INPUTS_ARG2: "${{ steps.c-3po.outputs.has-chances-survival }}"
         INPUTS_ARG3: "... to one"
+      uses: actions/github-script@v7
       with:
         script: |
           const args = [process.env.INPUTS_ARG1, process.env.INPUTS_ARG2, process.env.INPUTS_ARG3]
