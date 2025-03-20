@@ -19,7 +19,7 @@ outputs:
   commands:
     description: List of parsed commands. In JSON format.
 runs:
-  using: node16
+  using: node20
   main: dist/index.js
 branding:
   icon: user
